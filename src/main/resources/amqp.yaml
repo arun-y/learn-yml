@@ -1,0 +1,27 @@
+vhost1: 
+  username: sa
+  password: sa
+  queues: 
+    queue1:
+      name: in
+      exchange: ex
+      routingkey: sms
+    queue2: 
+      name: out
+      exchange: ex
+      routingkey: sms
+? !!str vhost2
+: !!map
+  username: sa
+  password: sa
+  queues: !!map
+    ? !!str queue1
+    : !!map
+      name: in
+      exchange: ex
+      routingkey: sms
+    ? !!str queue2
+    : !!map
+      name: out
+      exchange: ex
+      routingkey: sms
